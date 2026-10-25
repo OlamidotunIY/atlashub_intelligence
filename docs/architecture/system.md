@@ -43,3 +43,10 @@ Java command handlers already exist for catalog creation, inventory adjustments,
 - Sensitive writes need step-up and/or existing maker-checker controls regardless of speaker confidence.
 - A tool failure must never be reported as a completed operation.
 - Every run is cancellable, observable and budget limited.
+
+
+## Updated identity, organization and provider authority (2026-10-25)
+
+Central Atlas Hub Auth Web is a standalone **frontend**, Java backend/IdP remains global user/session authority and implements OIDC/BFF. A User may be authenticated with **no Organization**; do not require `activeOrganizationId` for basic identity/general-purpose AI conversation or developer identity. Any Java **business tool** must require a currently authorized organization and permissions; org absent -> safe error/clarification or explicit selection, never assume default. `CreateOrganization` is separate from `RegisterUser` and requires a genuinely authenticated, verified individual.
+
+Universal Anchor-owned bank accounts and five-step KYB are being retired; new integrations are **merchant-connected providers** with capability-specific availability/verification. Financial tools must call provider-aware Java handlers, not manipulate Atlas-owned FBO, virtual NUBAN or fictitious wallet funds. Payment provider/KYB verification remains the provider's required onboarding when relevant; it must not block read-only generic conversation or business creation. No model-issued direct bank payout. See [Provider transition](https://github.com/OlamidotunIY/atlashub_backend/blob/docs/global-platform-ai-storefront-architecture/docs/architecture/provider-banking-decommission.md).
