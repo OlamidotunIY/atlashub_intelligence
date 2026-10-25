@@ -1,0 +1,31 @@
+# Atlas Intelligence
+
+> **Status:** Documentation-first architecture. This repository does not yet contain a runnable AI service.
+
+Python service for Atlas Hub's conversational and voice-enabled business assistant, including self-hosted model inference, authorized tool planning, conversation orchestration, evidence grounding, and optional speaker-risk assessment.
+
+## Boundaries
+
+- **Atlas Hub backend (Java)** owns identity, authenticated sessions, organization scopes, RBAC, entitlements, business data, command handlers, approvals, transactional truth and accounting.
+- **Atlas Intelligence (Python)** owns conversation processing, tool proposals, self-hosted inference, speech-to-text, text-to-speech, model evaluation, and privacy-aware voice-risk signals.
+- Services communicate through **private versioned gRPC/Protocol Buffers**, with mutually authenticated service identities. Java validates authorization again before executing any proposed action.
+- Voice similarity **must never serve as sole authentication** or authorize a payment, refund, payroll disbursement, or high-risk action.
+- No unrestricted direct access to Atlas Hub's business database.
+
+## Proposed design
+
+Domain-Driven Design, Clean/Hexagonal Architecture and CQRS for meaningful stateful commands/queries. No mechanical CQRS for individual audio chunks.
+
+Read the documents before writing application code:
+
+- [Architecture and bounded contexts](docs/architecture/system.md)
+- [Module-by-module implementation plan](docs/modules/index.md)
+- [Voice identity, anti-spoofing and user recovery](docs/security/voice-identity.md)
+- [Internal gRPC contracts](docs/contracts/grpc.md)
+- [ADR 0001: Java/Python service boundary](docs/decisions/0001-service-boundary.md)
+
+## Delivery principles
+
+Start with read-only text tools, then authorized mutation tools with previews and approvals. Add streaming speech and self-hosted model serving based on measured performance, consent and security testing. Provider independence means ownership of inference/agent orchestration; it does not require training a frontier language model from zero.
+
+**Planning only.** No module, API, ML model, or speaker verification system should be described as implemented until tested and released.
