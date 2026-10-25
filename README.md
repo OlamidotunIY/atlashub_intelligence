@@ -29,3 +29,8 @@ Read the documents before writing application code:
 Start with read-only text tools, then authorized mutation tools with previews and approvals. Add streaming speech and self-hosted model serving based on measured performance, consent and security testing. Provider independence means ownership of inference/agent orchestration; it does not require training a frontier language model from zero.
 
 **Planning only.** No module, API, ML model, or speaker verification system should be described as implemented until tested and released.
+
+
+## Global user identity and provider-connected businesses (2026-10-25 decision)
+
+Global `User` registration occurs through standalone [Auth Web](https://github.com/OlamidotunIY/atlashub_auth_web) and Java identity (no Organization required). Separate authenticated organization creation provides OWNER membership; an individual creator/AI user may have zero organizations. Storefront creator workspace uses [separate Portal frontend](https://github.com/OlamidotunIY/atlashub_storefront_portal). The Java backend is moving from compulsory Atlas-owned Anchor banking/KYB to **merchant-connected eligible payment/shipping providers**. Intelligence tools must check actual Java IAM/organization context and integration capabilities; never fabricate bank balances, execute unavailable provider operations, or claim financial transfers succeed without verified provider outcome. Provider onboarding/verification remains required where applicable. The Auth frontend is separate; AI is not an identity provider. See [Java v2 PRD](https://github.com/OlamidotunIY/atlashub_backend/blob/docs/global-platform-ai-storefront-architecture/docs/atlashub-prd-v2.md).
