@@ -1,6 +1,9 @@
 # Atlas Intelligence — Internal gRPC contract proposal
 
-**Status:** Draft contract. No .proto files exist yet.
+**Update (2026-10-26):** Canonical initial `v1alpha1` private Java/Python tool RPC schema now exists at [atlashub_contracts: tool_gateway.proto](https://github.com/OlamidotunIY/atlashub_contracts/blob/main/proto/atlashub/intelligence/v1alpha1/tool_gateway.proto). The service is **not implemented**; the operations listed below beyond ListAuthorizedTools/ExecuteAuthorizedTool remain future proposals. Import generated Python protobuf/grpcio packages through infrastructure ports, not the domain. Browser real-time audio still needs a WebRTC/WebSocket gateway. Generated artifacts not published.
+
+
+**Status:** Draft service design. The first shared .proto draft exists in separate `atlashub_contracts`, but runtime client/server and released generated packages do not.
 
 ## Trust boundary
 Java API is the identity/authorization authority; Python is a delegated tool planner, not an independent admin. Mutual service authentication and short-lived signed context required. Reject organization/environment IDs supplied only by frontend or model.
