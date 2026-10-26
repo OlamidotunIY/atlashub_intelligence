@@ -43,3 +43,8 @@ Contract tests for protobuf backward compatibility; isolated domain tests; integ
 
 ## Deferred
 Foundational language model training from scratch, autonomous approval of high-risk actions, voice as sole authenticator, unrestricted model database access, cross-organization training without explicit governance.
+
+
+## Architecture requirements
+
+Each bounded context must conform to [DDD/Clean/Hexagonal design and Java tool authority](../architecture/clean-hexagonal.md), [Python package boundaries](../architecture/folder-structure.md), [security/model/voice engineering policy](../guidelines/engineering-rules.md), and [test/release/evaluation gates](../guidelines/testing-release.md). No Python service can bypass the Java identity, organization, approval or merchant-provider capability boundaries.
