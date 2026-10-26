@@ -34,3 +34,16 @@ Start with read-only text tools, then authorized mutation tools with previews an
 ## Global user identity and provider-connected businesses (2026-10-25 decision)
 
 Global `User` registration occurs through standalone [Auth Web](https://github.com/OlamidotunIY/atlashub_auth_web) and Java identity (no Organization required). Separate authenticated organization creation provides OWNER membership; an individual creator/AI user may have zero organizations. Storefront creator workspace uses [separate Portal frontend](https://github.com/OlamidotunIY/atlashub_storefront_portal). The Java backend is moving from compulsory Atlas-owned Anchor banking/KYB to **merchant-connected eligible payment/shipping providers**. Intelligence tools must check actual Java IAM/organization context and integration capabilities; never fabricate bank balances, execute unavailable provider operations, or claim financial transfers succeed without verified provider outcome. Provider onboarding/verification remains required where applicable. The Auth frontend is separate; AI is not an identity provider. See [Java v2 PRD](https://github.com/OlamidotunIY/atlashub_backend/blob/docs/global-platform-ai-storefront-architecture/docs/atlashub-prd-v2.md).
+
+
+## Required Python engineering architecture
+
+Use **DDD + Clean Architecture + Hexagonal ports/adapters** for conversation, tool authorization and model/speech business policies. Keep the Python domain pure and infrastructure-neutral. gRPC clients, local model runtimes, speech engines, persistence and telemetry are adapters; Java business tools remain authoritative. Apply CQRS to meaningful stateful operations, not every stream frame/token.
+
+- [Core architecture, bounded contexts and Java authority](docs/architecture/clean-hexagonal.md)
+- [Python package/folder layout and import rules](docs/architecture/folder-structure.md)
+- [Engineering/security/voice rules](docs/guidelines/engineering-rules.md)
+- [Testing, evaluation and deployment gates](docs/guidelines/testing-release.md)
+- [Module-by-module backlog](docs/modules/index.md)
+
+Standalone Python repository with normal Python tooling; no Turborepo/Nx. The infrastructure, AI engine and production speaker verification are not implemented yet.
