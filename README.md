@@ -47,3 +47,8 @@ Use **DDD + Clean Architecture + Hexagonal ports/adapters** for conversation, to
 - [Module-by-module backlog](docs/modules/index.md)
 
 Standalone Python repository with normal Python tooling; no Turborepo/Nx. The infrastructure, AI engine and production speaker verification are not implemented yet.
+
+
+## Shared Protobuf contracts (2026-10-26)
+
+[atlashub_contracts](https://github.com/OlamidotunIY/atlashub_contracts) is the canonical source for Java↔Python native gRPC tool service schemas, including the initial **internal** `atlashub.intelligence.v1alpha1` draft. Python imports version-pinned generated Protobuf/grpcio stubs **only from infrastructure adapters** and maps into its own Clean Architecture application types. Java remains the authority for user/org scopes, business tools, provider eligibility, idempotency and approvals. Browser voice streams use WebRTC/WebSocket gateway, not browser native bidirectional gRPC. These are contracts, not working RPC endpoints. [Tool gateway draft](https://github.com/OlamidotunIY/atlashub_contracts/blob/main/proto/atlashub/intelligence/v1alpha1/tool_gateway.proto).
